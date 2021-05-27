@@ -34,6 +34,6 @@ namespace HamApp.V1.Data
         public DbSet<Category> Categories{ get; set; }
         public DbSet<Inventory> Inventories{ get; set; }
         public DbSet<Product> Products{ get; set; }
-        public DbSet<Transaction> Transactions{ get; set; }
+        //public DbSet<Transaction> Transactions{ get; set; }
     }
 }

@@ -6,21 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HamApp.Data
-{
-    public class Transaction
-    {
-        [Key]
-        public int Id { get; set; }
+//namespace HamApp.Data
+//{
+    //public class Transaction
+    //{
+    //    [Key]
+    //    public int Id { get; set; }
 
 
-        [ForeignKey(nameof(Customer))]
-        public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
+    //    [ForeignKey(nameof(Customer))]
+    //    public int CustomerId { get; set; }
+    //    public virtual Customer Customer { get; set; }
 
 
-        [ForeignKey(nameof(Product))]
-        public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
-    }
-}
+    //    [ForeignKey(nameof(Product))]
+    //    public int ProductId { get; set; }
+    //    public virtual Product Product { get; set; }
+//    }
+//}

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HamApp.Service
+namespace HamApp.Models
 {
-    public class Class1
+    public class CategoryEdit
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

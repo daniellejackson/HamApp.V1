@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HamApp.Data
+namespace HamApp.Models
 {
-    public class Class1
+    public class InventoryCreate
     {
+        public int Id { get; set; }
     }
 }

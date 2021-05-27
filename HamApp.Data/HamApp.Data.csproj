@@ -55,13 +55,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Migrations\202105172042126_initMigration.cs" />
     <Compile Include="Migrations\202105172042126_initMigration.Designer.cs">
       <DependentUpon>202105172042126_initMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105172053267_didIClearTheCategoryValueFromTheTable.cs" />
+    <Compile Include="Migrations\202105172053267_didIClearTheCategoryValueFromTheTable.Designer.cs">
+      <DependentUpon>202105172053267_didIClearTheCategoryValueFromTheTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105241646149_idk.cs" />
+    <Compile Include="Migrations\202105241646149_idk.Designer.cs">
+      <DependentUpon>202105241646149_idk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105241653482_AddedDescriptionToProductAndCategoryTables.cs" />
+    <Compile Include="Migrations\202105241653482_AddedDescriptionToProductAndCategoryTables.Designer.cs">
+      <DependentUpon>202105241653482_AddedDescriptionToProductAndCategoryTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105252206532_updatedData.cs" />
+    <Compile Include="Migrations\202105252206532_updatedData.Designer.cs">
+      <DependentUpon>202105252206532_updatedData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105261510526_AddedGuid.cs" />
+    <Compile Include="Migrations\202105261510526_AddedGuid.Designer.cs">
+      <DependentUpon>202105261510526_AddedGuid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
@@ -75,6 +94,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202105172042126_initMigration.resx">
       <DependentUpon>202105172042126_initMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105172053267_didIClearTheCategoryValueFromTheTable.resx">
+      <DependentUpon>202105172053267_didIClearTheCategoryValueFromTheTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105241646149_idk.resx">
+      <DependentUpon>202105241646149_idk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105241653482_AddedDescriptionToProductAndCategoryTables.resx">
+      <DependentUpon>202105241653482_AddedDescriptionToProductAndCategoryTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105252206532_updatedData.resx">
+      <DependentUpon>202105252206532_updatedData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105261510526_AddedGuid.resx">
+      <DependentUpon>202105261510526_AddedGuid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
