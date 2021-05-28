@@ -11,39 +11,109 @@ namespace HamApp.Service
 {
     public class ProductService
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
-        private readonly Guid _Id;
+
+        private readonly Guid _userId;
         public ProductService(Guid Id)
         {
-            _Id = Id;
+            _userId = Id;
         }
 
         public bool CreateProduct(ProductCreate model)
         {
-            var productEntity = new Product
-            {
-                Id = (_context.Categories.Single(c => c.Name.ToLower() == model.ProductName.ToLower())).Id,
-                Cost = model.Cost,
-                Description = model.Description
+            var entity =
+                new Product()
+                {
+                    OwnerId = _userId,
+                    ProductName = model.ProductName,
+                    Cost = model.Cost,
+                    Description = model.Description,
+                    CategoryID = model.CategoryID
 
-            };
-            _context.Products.Add(productEntity);
-            return _context.SaveChanges() == 1;
+                };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Products.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
         }
 
-        public IEnumerable<ProductListItem> GetAllProducts()
+        public IEnumerable<ProductListItem> GetProducts()
         {
-            var productEntities = _context.Products.ToList();
-            var productList = productEntities.Select(e => new ProductListItem
+            using (var ctx = new ApplicationDbContext())
             {
-                Id = e.Id,
-                //CategoryName = (_context.Categories.Single(c => c.Id == e.CategoryId)).Name,
-                ProductName = (_context.Products.Single(p => p.Id == e.Id)).ProductName,
-            }).ToList().OrderByDescending(p => p.Id);
-            return productList;
+                var query =
+                    ctx
+                    .Products.Where(e => e.OwnerId == _userId)
+                    .Select(
+                        e =>
+                        new ProductListItem
+                        {
+                            Id = e.Id,
+                            ProductName = e.ProductName,
+                            CategoryID = e.CategoryID
+
+                        }
+                        );
+                return query.ToArray();
+            }
+
+
+
+        }
+        public ProductDetail GetProductById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Products
+                    .Single(e => e.Id == id && e.OwnerId == _userId);
+                return
+                    new ProductDetail
+                    {
+                        ProductName = entity.ProductName,
+                        Cost = entity.Cost,
+                        Description = entity.Description,
+                        Count = entity.Count,
+                        CategoryID = entity.CategoryID
+
+                    };
+            }
         }
 
-       
+        public bool UpdateProduct(ProductEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Products
+                    .Single(e => e.Id == model.Id && e.OwnerId == _userId);
+
+                entity.ProductName = model.ProductName;
+                entity.Cost = model.Cost;
+                entity.Count = model.Count;
+                entity.Description = model.Description;
+                entity.CategoryID = model.CategoryID;
+                    return ctx.SaveChanges() == 1;
+
+            }
+              
+
+        }
+
+        public bool DeleteProduct(int Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Products
+                    .Single(e => e.Id == Id && e.OwnerId == _userId);
+                ctx.Products.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

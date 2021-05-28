@@ -22,9 +22,7 @@ namespace HamApp.Data
         public virtual Category Category { get; set; }
 
 
-        [ForeignKey(nameof(Inventory))]
-        public int InventoryID { get; set; }
-        public virtual Inventory Inventory{ get; set; }
+       
 
       
     }

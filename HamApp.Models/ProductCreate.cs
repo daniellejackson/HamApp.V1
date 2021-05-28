@@ -12,5 +12,6 @@ namespace HamApp.Models
         public string ProductName { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
+        public int CategoryID { get; set; }
     }
 }

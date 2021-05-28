@@ -10,6 +10,7 @@ namespace HamApp.Models
 {
     public class ProductDetail
     {
+        public int Id { get; set; }
         public string ProductName { get; set; }
         public decimal Cost { get; set; }
         public int Count { get; set; }
